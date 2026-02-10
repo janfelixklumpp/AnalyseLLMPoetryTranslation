@@ -123,12 +123,10 @@ def get_metrical_distance(candidate, metrical_pattern, lang="de"):
     elif len(stresses) > len(metre):
         diff = len(stresses) - len(metre)
         while diff > 0:
-            # get a table of all possible line alignments
-            #table = [line_distance([stresses[i+j] for i in range(len(metre))], metre) for j in range(diff)]
             min_value = 1000
             min_index = 0
             for x in range(len(stresses)):
-                value = sum(stresses[x])# + sum([min([table[i][j] for i in range(diff)]) for j in range(len(metre))]) / len(metre)
+                value = sum(stresses[x])
                 if value < min_value:
                     min_value = value
                     min_index = x
@@ -137,11 +135,10 @@ def get_metrical_distance(candidate, metrical_pattern, lang="de"):
     elif len(metre) > len(stresses):
         diff = len(metre) - len(stresses)
         while diff > 0:
-            #table = [line_distance([metre[i + j] for i in range(len(stresses))], stresses) for j in range(diff)]
             min_value = 1000
             min_index = 0
             for x in range(len(metre)):
-                value = sum(metre[x]) #+ sum([min([table[i][j] for i in range(diff)]) for j in range(len(stresses))]) / len(stresses)
+                value = sum(metre[x])
                 if value < min_value:
                     min_value = value
                     min_index = x
